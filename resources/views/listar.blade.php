@@ -4,6 +4,10 @@
         <b>Pizza creada</b> <br>
     @endif
 
+    @if(session("eliminado"))
+        <b>Pizza Eliminada</b> <br>
+    @endif
+
     <h2>Pizzas disponibles </h2>
     <table>
         <thead>
@@ -27,6 +31,10 @@
             </td>
             <td>
                 {{ $p -> created_at }}
+            </td>
+
+            <td>
+                <a href="/eliminar/{{ $p -> id }}">Eliminar</a>
             </td>
         </tr>
         @endforeach

@@ -21,4 +21,10 @@ class PizzaController extends Controller
         $pizzas = Pizza::all();
         return view("listar",[ "pizzas" => $pizzas]);
     }
+    public function Eliminar(Request $request, $id){
+        $pizza = Pizza::find($id);
+        $pizza -> delete();
+
+        return redirect("/")->with("eliminado",true);
+    }
 }

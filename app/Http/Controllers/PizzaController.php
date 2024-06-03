@@ -13,7 +13,12 @@ class PizzaController extends Controller
         $pizza -> precio = $request -> post("precio");
         $pizza -> save();
 
-        return redirect("/crear")->with("creado",true);
-        
+        return redirect("/")->with("creado",true);
+
+    }
+
+    public function Listar(Request $request){
+        $pizzas = Pizza::all();
+        return view("listar",[ "pizzas" => $pizzas]);
     }
 }

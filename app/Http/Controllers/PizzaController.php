@@ -22,9 +22,29 @@ class PizzaController extends Controller
         return view("listar",[ "pizzas" => $pizzas]);
     }
     public function Eliminar(Request $request, $id){
-        $pizza = Pizza::find($id);
+        $pizza = Pizza::findOrFail($id);
         $pizza -> delete();
 
         return redirect("/")->with("eliminado",true);
     }
+
+    public function MostrarFormularioDeModificar(Request $request, $id){
+        $pizza = Pizza::findOrFail($id);
+        return view("modificar",["pizza" => $pizza]);
+
+    }
+
+    public function Modificar(Request $request){
+        $pizza = Pizza::findOrFail($request -> post("id"));
+        $pizza -> nombre = $request -> post("nombre");
+        $pizza -> precio = $request -> post("precio");
+        $pizza -> save();
+
+        return redirect("/") 
+            -> with("modificado",true);
+    }
+
+
+
+
 }

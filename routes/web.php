@@ -12,3 +12,6 @@ Route::get('/crear', function () {
 });
 
 Route::post('/crear', [PizzaController::class,"Crear"]);
+
+Route::get('/modificar/{d}', [PizzaController::class,"MostrarFormularioDeModificar"]);
+Route::post('/modificar', [PizzaController::class,"Modificar"]);

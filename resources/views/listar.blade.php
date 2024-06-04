@@ -8,6 +8,10 @@
         <b>Pizza Eliminada</b> <br>
     @endif
 
+    @if(session("modificado"))
+        <b>Pizza Modificada</b> <br>
+    @endif
+
     <h2>Pizzas disponibles </h2>
     <table>
         <thead>
@@ -35,6 +39,7 @@
 
             <td>
                 <a href="/eliminar/{{ $p -> id }}">Eliminar</a>
+                <a href="/modificar/{{ $p -> id }}">Modificar</a>
             </td>
         </tr>
         @endforeach
